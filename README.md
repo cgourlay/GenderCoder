@@ -5,13 +5,9 @@ Utilities for determining gender based on first name (U.S. bias)
 
 (Updated: 2014-08-18)
 
-RS is a work in progress. I created this class library with the intention of compiling methods and classes I frequently use into a single location. Highlights include:
+Gender Coder is a bit of a hard-and-fast gender identification solution optimized for handling large sets of input data.
 
-##Utilities.Windows
+Gender Coder's identification library is based on nam_dict.txt (referenced as GenderCodingNames.txt) from the open-source gender.c (http://www.heise.de/ct/ftp/07/17/182/), and is supplemented with a name list gleaned from 2010 US Census data. The supplemental list was constructed by combining lists of top female and male first names, removing any shared entries between the two lists, and removing any names found within nam_dict.txt . Names in the supplemental library default to strongly-typed male or female, depending on their dataset of origin (probably not ideal, but we're playing hard-and-fast, right?).
 
-This namespace houses methods for interacting with program windows - useful, if not overly exciting. Methods to identify and close windows can be particularly useful when one needs to shell out an application to complete a certain process and/or programatically interact with an application's UI (via SendKeys, for example).
-
-##Utilities.FileWriter
-
-I developed this generic file writer in order to assist in writing large amounts of data from query results to file. The WriteFile method accepts either a DataTable or a List as an argument, along with parameters related to file format, and handles the header record and variable typing through reflection.
+While GenderCoder.Processor contains a method to return a single GenderCodingResult, the solution is optimized to return results for large lists of names quickly through multi-threading the lookup process.
 
