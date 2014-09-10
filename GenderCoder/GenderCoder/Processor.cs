@@ -80,18 +80,6 @@ namespace GenderCoder
             }
         }
 
-        private static void ConfigureGenderCodingResults(List<GenderCodingInput> FirstNames)
-        {
-            Results = new List<GenderCodingResult>();
-
-            int row = 1;
-
-            foreach (GenderCodingInput input in FirstNames)
-            {
-                Results.Add(new GenderCodingResult(input.FirstName, row, input.Id));
-                row++;
-            }
-        }
 
         private static void ProcessInputRecords()
         {
