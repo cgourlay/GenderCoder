@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 
 
 
@@ -17,7 +17,7 @@
 
 
 
-using System;
+
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,15 +118,6 @@ namespace GenderCoder
             }
         }
 
-        private static void RunThread(List<GenderCodingResult> WorkingRecords)
-        {
-            foreach (GenderCodingResult record in WorkingRecords)
-            {
-                record.Gender = LookupName(record.FirstName);
-
-                record.Processed = true;
-            }
-        }
 
         private static Gender LookupName(string FirstName)
         {
