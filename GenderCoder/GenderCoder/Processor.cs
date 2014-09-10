@@ -9,8 +9,8 @@ namespace ColinGourlay.GenderEncoder
     {
         static CategoryProcessor()
         {
-            GenderEncoding.AllGenderEncodedNames.Refresh();
-            GenderEncoding.AllWildCardNames.Refresh();
+            GenderEncoding.AllGenderEncodedNames.UpdateCache();
+            GenderEncoding.AllWildCardNames.UpdateCache();
         }
 
         public static Gender GetGender(string forename)
