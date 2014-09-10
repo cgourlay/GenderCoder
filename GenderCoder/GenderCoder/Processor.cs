@@ -4,13 +4,11 @@ using Newtonsoft.Json;
 
 namespace ColinGourlay.GenderEncoder
 {
-    public class CategoryProcessor
+    public static class CategoryProcessor
     {
-        public CategoryProcessor()
+        static CategoryProcessor()
         {
             GenderCodingNames.AllGenderCodingNames.Refresh();
-            GenderCodingNames.UnitesStatesNames.Refresh();
-            GenderCodingNames.ForeignNames.Refresh();
             GenderCodingNames.WildCardNames.Refresh();
         }
 
@@ -40,34 +38,34 @@ namespace ColinGourlay.GenderEncoder
 
         private static Gender SearchForeignNames(string workingFirstName)
         {
-            //If we've still got nothing, try a  deep case-insensitive compare...
-            foreach (GenderCodingName name in GenderCodingNames.ForeignNames)
-            {
-                //Remove wildcard from the gender coding name, if it exists
-                string compare = name.FirstName.Contains("+") ? name.FirstName.Replace("+", "") : name.FirstName;
+            ////If we've still got nothing, try a  deep case-insensitive compare...
+            //foreach (GenderCodingName name in GenderCodingNames.ForeignNames)
+            //{
+            //    //Remove wildcard from the gender coding name, if it exists
+            //    string compare = name.FirstName.Contains("+") ? name.FirstName.Replace("+", "") : name.FirstName;
 
-                if (string.Equals(workingFirstName, compare, StringComparison.OrdinalIgnoreCase))
-                {
-                    {
-                        return name.Sex;
+            //    if (string.Equals(workingFirstName, compare, StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        {
+            //            return name.Sex;
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
             return Gender.Unknown;
         }
 
         private static Gender SearchAmericanNames(string workingFirstName)
         {
-            foreach (GenderCodingName name in GenderCodingNames.UnitesStatesNames)
-            {
-                if (string.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
-                {
-                    {
-                        return name.Sex;
-                    }
-                }
-            }
+            //foreach (GenderCodingName name in GenderCodingNames.UnitesStatesNames)
+            //{
+            //    if (string.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        {
+            //            return name.Sex;
+            //        }
+            //    }
+            //}
             return Gender.Unknown;
         }
 

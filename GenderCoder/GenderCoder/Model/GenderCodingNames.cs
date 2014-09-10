@@ -9,15 +9,11 @@ namespace ColinGourlay.GenderEncoder.Model
     internal static class GenderCodingNames
     {
         public static CachedList<GenderCodingName> AllGenderCodingNames { get; private set; }
-        public static CachedList<GenderCodingName> UnitesStatesNames { get; private set; }
-        public static CachedList<GenderCodingName> ForeignNames { get; private set; }
         public static CachedList<GenderCodingName> WildCardNames { get; private set; }
 
         static GenderCodingNames()
         {
             AllGenderCodingNames = new CachedList<GenderCodingName>(GetAllGenderCodingNames);
-            UnitesStatesNames = new CachedList<GenderCodingName>(GetAllGenderCodingNames);
-            ForeignNames = new CachedList<GenderCodingName>(GetAllGenderCodingNames);
             WildCardNames = new CachedList<GenderCodingName>(GetWildCardNames);
         }
 
