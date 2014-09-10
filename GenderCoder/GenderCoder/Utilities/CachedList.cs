@@ -5,34 +5,34 @@ namespace ColinGourlay.GenderEncoder.Utilities
 {
     internal class CachedList<T> : IEnumerable<T>
     {
-        private TimeSpan? _autoRefreshInterval;
+        private TimeSpan? _refreshInterval;
         private List<T> _cachedList;
         private DateTime? _lastRefreshed;
 
-        public CachedList(Func<List<T>> listToCache, TimeSpan? autoRefreshInterval = null)
+        public CachedList(Func<List<T>> listToCache, TimeSpan? refreshInterval = null)
         {
-            _autoRefreshInterval = autoRefreshInterval;
+            _refreshInterval = refreshInterval;
             _cachedList = new List<T>();
-            ListBeingCached = listToCache;
+            ListToCache = listToCache;
         }
 
-        private List<T> List
+        private List<T> List { get { return GetCachedList(); } }
+
+        private Func<List<T>> ListToCache { get; set; }
+
+        private TimeSpan TimeSinceLastRefresh { get { return DateTime.Now - _lastRefreshed.Value; } }
+
+        private List<T> GetCachedList()
         {
-            get
+            if (_lastRefreshed.HasValue)
             {
-                if (_lastRefreshed.HasValue)
-                {
-                    if (!_autoRefreshInterval.HasValue) { return _cachedList; }
-                    var timeSinceLastRefresh = DateTime.Now - _lastRefreshed.Value;
-                    if (timeSinceLastRefresh <= _autoRefreshInterval) { return _cachedList; }
-                }
-
-                UpdateCache();
-                return _cachedList;
+                if (!_refreshInterval.HasValue) { return _cachedList; }
+                if (TimeSinceLastRefresh <= _refreshInterval) { return _cachedList; }
             }
-        }
 
-        private Func<List<T>> ListBeingCached { get; set; }
+            UpdateCache();
+            return _cachedList;
+        }
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -46,7 +46,7 @@ namespace ColinGourlay.GenderEncoder.Utilities
 
         public void UpdateCache()
         {
-            _cachedList = ListBeingCached();
+            _cachedList = ListToCache();
             _lastRefreshed = DateTime.Now;
         }
     }
