@@ -4,8 +4,6 @@
     {
         Unknown,
         Male,
-        MostlyMale,
-        Female,
-        MostlyFemale
+        Female
     }
 }
