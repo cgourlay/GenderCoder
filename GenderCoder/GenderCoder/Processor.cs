@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
+
 using ColinGourlay.GenderEncoder.Model;
 using ColinGourlay.GenderEncoder.Utilities;
-using Newtonsoft.Json;
 
 namespace ColinGourlay.GenderEncoder
 {
@@ -28,61 +31,27 @@ namespace ColinGourlay.GenderEncoder
             var workingFirstName = CleanName(firstName);
             if (workingFirstName.Length < 1) { return Gender.Unknown; }
             workingFirstName = SubstituteSpacesWithWildcard(workingFirstName);
-            if (workingFirstName.Contains("+"))
-            {
-                return SearchWildcardNames(workingFirstName);
-            }
-            
-            return SearchAmericanNames(workingFirstName);
-            return SearchForeignNames(workingFirstName);
+            if (workingFirstName.Contains("+")) { return SearchCachedList(GenderEncoding.AllWildCardNames, workingFirstName); }
+            return SearchCachedList(GenderEncoding.AllGenderEncodedNames, workingFirstName);   
         }
 
-        private static Gender SearchForeignNames(string workingFirstName)
+        private static Gender SearchCachedList(IEnumerable<Person> cachedList, string forename)
         {
-            ////If we've still got nothing, try a  deep case-insensitive compare...
-            //foreach (GenderCodingName name in GenderCodingNames.ForeignNames)
-            //{
-            //    //Remove wildcard from the gender coding name, if it exists
-            //    string compare = name.FirstName.Contains("+") ? name.FirstName.Replace("+", "") : name.FirstName;
-
-            //    if (string.Equals(workingFirstName, compare, StringComparison.OrdinalIgnoreCase))
-            //    {
-            //        {
-            //            return name.Sex;
-
-            //        }
-            //    }
-            //}
-            return Gender.Unknown;
+            return (from person in cachedList where string.Equals(forename, person.Forename, StringComparison.OrdinalIgnoreCase) select person.Gender).FirstOrDefault();
         }
 
-        private static Gender SearchAmericanNames(string workingFirstName)
-        {
-            //foreach (GenderCodingName name in GenderCodingNames.UnitesStatesNames)
-            //{
-            //    if (string.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
-            //    {
-            //        {
-            //            return name.Sex;
-            //        }
-            //    }
-            //}
-            return Gender.Unknown;
-        }
 
-        private static Gender SearchWildcardNames(string workingFirstName)
-        {
-            foreach (Person name in GenderEncoding.AllWildCardNames)
-            {
-                if (string.Equals(workingFirstName, name.Forename, StringComparison.OrdinalIgnoreCase))
-                {
-                    {
-                        return name.Gender;
-                    }
-                }
-            }
-            return Gender.Unknown;
-        }
+
+
+
+
+
+
+
+
+
+
+
 
         private static string SubstituteSpacesWithWildcard(string workingFirstName)
         {
