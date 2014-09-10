@@ -13,60 +13,80 @@ namespace GenderCoder
             GenderCodingNames.ForeignNames.Refresh();
             GenderCodingNames.WildCardNames.Refresh();
         }
-        
+
         public static Gender GetGender(string forename)
         {
             return GetGenderUsingForename(forename);
         }
 
-        private static Gender GetGenderUsingForename(string FirstName)
+        private static Gender GetGenderUsingForename(string firstName)
         {
-            var workingFirstName = CleanName(FirstName);
-
-            if (workingFirstName.Length < 1)
-            {
-                return Gender.Unknown;
-            }
-
-            //Trim the string, then replace any spaces or hyphens with the "+" wildcard
-            workingFirstName = workingFirstName.Trim().Replace(" ", "+").Replace("-", "+");
-
-            //If the name contains a wildcard, run it against a subset of wildcard-containing names
+            var workingFirstName = CleanName(firstName);
+            if (workingFirstName.Length < 1) { return Gender.Unknown; }
+            workingFirstName = SubstituteSpacesWithWildcard(workingFirstName);
             if (workingFirstName.Contains("+"))
             {
-                foreach (GenderCodingName name in GenderCodingNames.WildCardNames)
-                {
-                    if (String.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        return name.Sex;
-                    }
-                }
+                return SearchWildcardNames(workingFirstName);
             }
             else
             {
-                //Otherwise, attempt a case-insensitive compare against US-Only names
-                foreach (GenderCodingName name in GenderCodingNames.UnitesStatesNames)
-                {
-                    if (String.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        return name.Sex;
-                    }
-                }
+                return SearchAmericanNames(workingFirstName);
             }
 
+            return SearchForeignNames(workingFirstName);
+        }
+
+        private static Gender SearchForeignNames(string workingFirstName)
+        {
             //If we've still got nothing, try a  deep case-insensitive compare...
             foreach (GenderCodingName name in GenderCodingNames.ForeignNames)
             {
                 //Remove wildcard from the gender coding name, if it exists
                 string compare = name.FirstName.Contains("+") ? name.FirstName.Replace("+", "") : name.FirstName;
 
-                if (String.Equals(workingFirstName, compare, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(workingFirstName, compare, StringComparison.OrdinalIgnoreCase))
                 {
-                    return name.Sex;
+                    {
+                        return name.Sex;
+
+                    }
                 }
             }
-
             return Gender.Unknown;
+        }
+
+        private static Gender SearchAmericanNames(string workingFirstName)
+        {
+            foreach (GenderCodingName name in GenderCodingNames.UnitesStatesNames)
+            {
+                if (string.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
+                {
+                    {
+                        return name.Sex;
+                    }
+                }
+            }
+            return Gender.Unknown;
+        }
+
+        private static Gender SearchWildcardNames(string workingFirstName)
+        {
+            foreach (GenderCodingName name in GenderCodingNames.WildCardNames)
+            {
+                if (string.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
+                {
+                    {
+                        return name.Sex;
+                    }
+                }
+            }
+            return Gender.Unknown;
+        }
+
+        private static string SubstituteSpacesWithWildcard(string workingFirstName)
+        {
+            workingFirstName = workingFirstName.Trim().Replace(" ", "+").Replace("-", "+");
+            return workingFirstName;
         }
 
         private static string CleanName(string FirstName)
