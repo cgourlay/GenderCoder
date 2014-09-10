@@ -5,17 +5,11 @@ using System.Linq;
 using System.Threading;
 using GenderCoder.Entities;
 
+/// <summary>
+/// The GenderCoder namespace.
+/// </summary>
 namespace GenderCoder
 {
-    public enum Gender
-    {
-        Unknown,
-        Male,
-        MostlyMale,
-        Female,
-        MostlyFemale
-    }
-
     public static class Processor
     {
         static Processor()
