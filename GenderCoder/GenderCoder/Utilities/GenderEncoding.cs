@@ -7,12 +7,12 @@ using ColinGourlay.GenderEncoder.Properties;
 
 namespace ColinGourlay.GenderEncoder.Utilities
 {
-    internal static class GenderEncodedNames
+    internal static class GenderEncoding
     {
         internal static CachedList<Person> AllGenderEncodedNames { get; private set; }
         internal static CachedList<Person> AllWildCardNames { get; private set; }
 
-        static GenderEncodedNames()
+        static GenderEncoding()
         {
             AllGenderEncodedNames = new CachedList<Person>(GetAllGenderEncodedNames);
             AllWildCardNames = new CachedList<Person>(GetWildCardNames);
