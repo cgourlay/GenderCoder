@@ -1,9 +1,8 @@
 ﻿using System;
+using ColinGourlay.GenderEncoder.Model;
+using Newtonsoft.Json;
 
-using GenderCoder.Model;
-using GenderCoder.Model;
-
-namespace GenderCoder
+namespace ColinGourlay.GenderEncoder
 {
     public class CategoryProcessor
     {
@@ -20,6 +19,11 @@ namespace GenderCoder
             return GetGenderUsingForename(forename);
         }
 
+        public static string AsJson(this Gender gender)
+        {
+            return JsonConvert.SerializeObject(gender);
+        }
+
         private static Gender GetGenderUsingForename(string firstName)
         {
             var workingFirstName = CleanName(firstName);
@@ -29,11 +33,8 @@ namespace GenderCoder
             {
                 return SearchWildcardNames(workingFirstName);
             }
-            else
-            {
-                return SearchAmericanNames(workingFirstName);
-            }
-
+            
+            return SearchAmericanNames(workingFirstName);
             return SearchForeignNames(workingFirstName);
         }
 
@@ -90,9 +91,9 @@ namespace GenderCoder
             return workingFirstName;
         }
 
-        private static string CleanName(string FirstName)
+        private static string CleanName(string firstName)
         {
-            string workingFirstName = FirstName.Trim();
+            string workingFirstName = firstName.Trim();
 
             while (workingFirstName.Contains("."))
             {
