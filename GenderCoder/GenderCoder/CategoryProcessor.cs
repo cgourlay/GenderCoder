@@ -40,43 +40,24 @@ namespace ColinGourlay.GenderEncoder
             return (from person in cachedList where string.Equals(forename, person.Forename, StringComparison.OrdinalIgnoreCase) select person.Gender).FirstOrDefault();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         private static string SubstituteSpacesWithWildcard(string workingFirstName)
         {
             workingFirstName = workingFirstName.Trim().Replace(" ", "+").Replace("-", "+");
             return workingFirstName;
         }
 
-        private static string CleanName(string firstName)
+        private static string CleanName(string forename)
         {
-            string workingFirstName = firstName.Trim();
+            var workingFirstName = forename.Trim();
 
             while (workingFirstName.Contains("."))
             {
-                int dotIndex = workingFirstName.IndexOf(".");
-
-                int spaceIndex = dotIndex - 1;
-
+                var dotIndex = workingFirstName.IndexOf(".");
+                var spaceIndex = dotIndex - 1;
                 while (workingFirstName[spaceIndex] != ' ')
                 {
                     spaceIndex--;
-
-                    if (spaceIndex == -1)
-                    {
-                        break;
-                    }
+                    if (spaceIndex == -1) { break; }
                 }
 
                 workingFirstName = workingFirstName.Remove(spaceIndex + 1, dotIndex - spaceIndex).Trim();

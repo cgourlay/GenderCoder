@@ -42,7 +42,7 @@
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Utilities\GenderEncoding.cs" />
-    <Compile Include="Processor.cs" />
+    <Compile Include="CategoryProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
