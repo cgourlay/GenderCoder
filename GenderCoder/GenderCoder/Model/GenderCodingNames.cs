@@ -17,42 +17,43 @@ namespace ColinGourlay.GenderEncoder.Model
             WildCardNames = new CachedList<GenderCodingName>(GetWildCardNames);
         }
 
-       
-       
         private static List<GenderCodingName> GetWildCardNames()
         {
             return (from n in AllGenderCodingNames where n.FirstName.Contains("+") select n).ToList();
         }
 
-
-
-
-
         private static List<GenderCodingName> GetAllGenderCodingNames()
         {
             var myResult = new List<GenderCodingName>();
-
-            //Load Gender Coding Names
-            var content = Resources.GenderCodingNames.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string s in content)
-            {
-                string[] line = s.Split('\t');
-
-                myResult.Add(new GenderCodingName(line[0], line[1]));
-            }
-
-            //Load Supplemental First Names
-            content = Resources.SupplementalFirstNames.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string s in content)
-            {
-                string[] line = s.Split('\t');
-
-                myResult.Add(new GenderCodingName(line[0], line[1]));
-            }
-
+            GetGenderEncoding(myResult);
+            GetAdditionalNames(myResult);
             return myResult.ToList();
+        }
+
+        private static void GetAdditionalNames(ICollection<GenderCodingName> myResult)
+        {
+            string[] content;
+
+            content = Resources.SupplementalFirstNames.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string s in content)
+            {
+                string[] line = s.Split('\t');
+
+                myResult.Add(new GenderCodingName(line[0], line[1]));
+            }
+        }
+
+        private static void GetGenderEncoding(ICollection<GenderCodingName> myResult)
+        {
+            var content = Resources.GenderCodingNames.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string s in content)
+            {
+                string[] line = s.Split('\t');
+
+                myResult.Add(new GenderCodingName(line[0], line[1]));
+            }
         }
     }
 }
