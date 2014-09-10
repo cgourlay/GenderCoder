@@ -1,23 +1,19 @@
 ﻿namespace GenderCoder.Entities
 {
-    public class GenderCodingResult
+    internal class GenderCodingResult
     {
-        public GenderCodingResult(string FirstName, int? Row = null, int? UniqueID = null)
+        public GenderCodingResult(string firstName, int? row = null, int? id = null, Gender gender = Gender.Unknown)
         {
-            this.FirstName = FirstName;
-            this.Row = Row;
-            this.UniqueID = UniqueID;
-
-            //Default gender to unknown
-            this.Gender = Gender.Unknown;
+            Id = id;
+            FirstName = firstName;
+            Row = row;
+            Gender = gender;
         }
 
-        public string FirstName { get; set; }
+        public string FirstName { get; private set; }
         public Gender Gender { get; set; }
-
-        public int? UniqueID { get; set; }
+        public int? Id { get; set; }
         public int? Row { get; set; }
-
         public bool Processed { get; set; }
     }
 }
