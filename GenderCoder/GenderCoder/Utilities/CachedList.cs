@@ -16,7 +16,7 @@ namespace GenderCoder.Utilities
             RefreshFunction = refreshFunction;
         }
 
-        public List<T> List
+        private List<T> List
         {
             get
             {
@@ -26,9 +26,9 @@ namespace GenderCoder.Utilities
                 {
                     if (_autoRefreshInterval.HasValue)
                     {
-                        TimeSpan TimeSinceLastRefresh = DateTime.Now - _lastRefreshed.Value;
+                        TimeSpan timeSinceLastRefresh = DateTime.Now - _lastRefreshed.Value;
 
-                        if (TimeSinceLastRefresh <= _autoRefreshInterval)
+                        if (timeSinceLastRefresh <= _autoRefreshInterval)
                         {
                             refreshRequired = false;
                         }
@@ -48,7 +48,7 @@ namespace GenderCoder.Utilities
             }
         }
 
-        public Func<List<T>> RefreshFunction { get; set; }
+        private Func<List<T>> RefreshFunction { get; set; }
 
         public IEnumerator<T> GetEnumerator()
         {
