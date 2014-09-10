@@ -66,7 +66,7 @@ namespace GenderCoder
             return Results;
         }
 
-        public static List<GenderCodingResult> GetGenderResults(List<GenderCodingInput> FirstNames)
+        internal static List<GenderCodingResult> GetGenderResults(List<GenderCodingInput> FirstNames)
         {
             //Configure results
             ConfigureGenderCodingResults(FirstNames);
@@ -100,7 +100,7 @@ namespace GenderCoder
 
             foreach (GenderCodingInput input in FirstNames)
             {
-                Results.Add(new GenderCodingResult(input.FirstName, row, input.UniqueID));
+                Results.Add(new GenderCodingResult(input.FirstName, row, input.Id));
                 row++;
             }
         }

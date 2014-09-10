@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GenderCoder.Entities
+﻿namespace GenderCoder.Entities
 {
     internal class GenderCodingInput
     {
-        public GenderCodingInput(string FirstName, int? UniqueID = null)
+        public GenderCodingInput(string firstName, int? uniqueId = null)
         {
-            this.FirstName = FirstName;
-            this.UniqueID = UniqueID;
+            Id = uniqueId; 
+            FirstName = firstName;   
         }
 
-        public string FirstName { get; set; }
-        
-        //Optional ID for record tracking
-        public int? UniqueID { get; set; }
+        public string FirstName { get; private set; }
+        public int? Id { get; private set; }
     }
 }
