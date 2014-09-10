@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Gender.cs" />
-    <Compile Include="Model\GenderCodingInput.cs" />
     <Compile Include="Model\GenderCodingName.cs" />
     <Compile Include="Model\GenderCodingNames.cs" />
     <Compile Include="Model\GenderCodingResult.cs" />
