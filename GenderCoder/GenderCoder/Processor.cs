@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 using GenderCoder.Entities;
 
@@ -20,10 +17,6 @@ namespace GenderCoder
 
 
 
-
-      
-        private static object ThreadLock = new object();
-
         private static List<GenderCodingResult> Results;
 
       
@@ -32,8 +25,6 @@ namespace GenderCoder
         {
             return LookupName(FirstName);
         }
-
-
 
         private static Gender LookupName(string FirstName)
         {
