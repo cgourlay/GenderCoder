@@ -193,7 +193,7 @@ namespace GenderCoder
                 {
                     if (String.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
                     {
-                        return name.Gender;
+                        return name.Sex;
                     }
                 }
             }
@@ -204,7 +204,7 @@ namespace GenderCoder
                 {
                     if (String.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
                     {
-                        return name.Gender;
+                        return name.Sex;
                     }
                 }
             }
@@ -217,7 +217,7 @@ namespace GenderCoder
 
                 if (String.Equals(workingFirstName, compare, StringComparison.OrdinalIgnoreCase))
                 {
-                    return name.Gender;
+                    return name.Sex;
                 }
             }
 

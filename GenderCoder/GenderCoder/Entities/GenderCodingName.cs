@@ -10,31 +10,31 @@
             switch (GenderCode)
             {
                 case "M":
-                    this.Gender = Gender.Male;
+                    this.Sex = Gender.Male;
                     break;
                 case "1M":
-                    this.Gender = Gender.MostlyMale;
+                    //this.Gender = Gender.MostlyMale;
                     break;
                 case "?M":
-                    this.Gender = Gender.MostlyMale;
+                    //this.Gender = Gender.MostlyMale;
                     break;
                 case "F":
-                    this.Gender = Gender.Female;
+                    this.Sex = Gender.Female;
                     break;
                 case "1F":
-                    this.Gender = Gender.MostlyFemale;
+                    //this.Gender = Gender.MostlyFemale;
                     break;
                 case "?F":
-                    this.Gender = Gender.MostlyFemale;
+                    //this.Gender = Gender.MostlyFemale;
                     break;
                 default:
-                    this.Gender = Gender.Unknown;
+                    this.Sex = Gender.Unknown;
                     break;
             }
         }
 
         public string FirstName { get; set; }
-        public Gender Gender { get; set; }
+        public Gender Sex { get; set; }
         public int USPopularity { get; set; }
     }
 }
