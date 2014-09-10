@@ -5,9 +5,6 @@ using System.Linq;
 using System.Threading;
 using GenderCoder.Entities;
 
-/// <summary>
-/// The GenderCoder namespace.
-/// </summary>
 namespace GenderCoder
 {
     public static class Processor
@@ -20,25 +17,20 @@ namespace GenderCoder
             GenderCodingNames.WildCardNames.Refresh();
         }
 
-        #region Public Properties
-
+      
         public delegate void ProgressChangedEventHandler(decimal PercentComplete);
 
         public static event ProgressChangedEventHandler ProgressChanged;
 
-        #endregion
+      
 
-
-        #region Private Variables
-
+      
         private static object ThreadLock = new object();
 
         private static List<GenderCodingResult> Results;
 
-        #endregion
-
-        #region Public
-
+      
+        
         public static Gender GetGender(string FirstName)
         {
             return LookupName(FirstName);
@@ -66,10 +58,7 @@ namespace GenderCoder
             return Results;
         }
 
-        #endregion
-
-        #region Private
-
+        
         private static void ConfigureGenderCodingResults(List<string> FirstNames)
         {
             Results = new List<GenderCodingResult>();
@@ -236,6 +225,5 @@ namespace GenderCoder
             System.Diagnostics.Debug.Print("Gender Coding Process : " + ProgressPercent.ToString("0.000%") + " complete!");
         }
 
-        #endregion
     }
 }
