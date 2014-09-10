@@ -1,5 +1,6 @@
 ﻿using System;
 using ColinGourlay.GenderEncoder.Model;
+using ColinGourlay.GenderEncoder.Utilities;
 using Newtonsoft.Json;
 
 namespace ColinGourlay.GenderEncoder

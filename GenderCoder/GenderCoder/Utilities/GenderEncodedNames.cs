@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using ColinGourlay.GenderEncoder.Model;
 using ColinGourlay.GenderEncoder.Properties;
-using ColinGourlay.GenderEncoder.Utilities;
 
-namespace ColinGourlay.GenderEncoder.Model
+namespace ColinGourlay.GenderEncoder.Utilities
 {
     internal static class GenderEncodedNames
     {
