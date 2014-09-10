@@ -2,33 +2,33 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 using System.Threading;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 using GenderCoder.Entities;
 
 namespace GenderCoder
 {
-    public static class Processor
+    public class CategoryProcessor
     {
-        static Processor()
+        public CategoryProcessor()
         {
             GenderCodingNames.AllGenderCodingNames.Refresh();
             GenderCodingNames.UnitesStatesNames.Refresh();
@@ -36,7 +36,6 @@ namespace GenderCoder
             GenderCodingNames.WildCardNames.Refresh();
         }
 
-      
       
         private static object ThreadLock = new object();
 
