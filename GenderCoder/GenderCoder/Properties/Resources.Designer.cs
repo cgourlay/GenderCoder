@@ -108,9 +108,9 @@ namespace ColinGourlay.GenderEncoder.Properties {
         ///Aaro	M	0
         ///Aaron [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string GenderCodingNames {
+        internal static string GenderMapping {
             get {
-                return ResourceManager.GetString("GenderCodingNames", resourceCulture);
+                return ResourceManager.GetString("GenderMapping", resourceCulture);
             }
         }
     }

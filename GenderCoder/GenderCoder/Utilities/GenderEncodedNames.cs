@@ -37,7 +37,7 @@ namespace ColinGourlay.GenderEncoder.Model
         {
             var genderEncoding = new List<Person>();
 
-            var content = Resources.GenderCodingNames.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            var content = Resources.GenderMapping.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string s in content)
             {
