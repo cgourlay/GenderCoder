@@ -71,12 +71,12 @@ namespace ColinGourlay.GenderEncoder
 
         private static Gender SearchWildcardNames(string workingFirstName)
         {
-            foreach (GenderCodingName name in GenderCodingNames.WildCardNames)
+            foreach (Person name in GenderCodingNames.WildCardNames)
             {
                 if (string.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
                 {
                     {
-                        return name.Sex;
+                        return name.Gender;
                     }
                 }
             }

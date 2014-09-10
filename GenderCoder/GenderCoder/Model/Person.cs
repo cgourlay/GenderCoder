@@ -1,26 +1,26 @@
 ﻿namespace ColinGourlay.GenderEncoder.Model
 {
-    internal class GenderCodingName
+    internal class Person
     {
-        public GenderCodingName(string firstName, string genderCode)
+        public Person(string firstName, string genderCode)
         {
             FirstName = firstName;
-           
-            switch (genderCode)
+
+            switch (genderCode.ToUpper())
             {
                 case "M":
-                    Sex = Gender.Male;
+                    Gender = Gender.Male;
                     break;
                 case "F":
-                    Sex = Gender.Female;
+                    Gender = Gender.Female;
                     break;
                 default:
-                    Sex = Gender.Unknown;
+                    Gender = Gender.Unknown;
                     break;
             }
         }
 
         public string FirstName { get; private set; }
-        public Gender Sex { get; private set; }
+        public Gender Gender { get; private set; }
     }
 }

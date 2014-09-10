@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Gender.cs" />
-    <Compile Include="Model\GenderCodingName.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Model\GenderCodingNames.cs" />
     <Compile Include="Processor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
