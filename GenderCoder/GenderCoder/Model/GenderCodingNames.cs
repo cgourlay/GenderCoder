@@ -5,7 +5,7 @@ using System.Linq;
 using GenderCoder.Properties;
 using GenderCoder.Utilities;
 
-namespace GenderCoder.Entities
+namespace GenderCoder.Model
 {
     internal static class GenderCodingNames
     {

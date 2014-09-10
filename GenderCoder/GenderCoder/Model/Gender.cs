@@ -1,4 +1,4 @@
-﻿namespace GenderCoder.Entities
+﻿namespace GenderCoder.Model
 {
     public enum Gender
     {

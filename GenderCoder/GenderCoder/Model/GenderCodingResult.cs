@@ -1,4 +1,4 @@
-﻿namespace GenderCoder.Entities
+﻿namespace GenderCoder.Model
 {
     internal class GenderCodingResult
     {

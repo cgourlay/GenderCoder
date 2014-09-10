@@ -1,6 +1,7 @@
 ﻿using System;
 
-using GenderCoder.Entities;
+using GenderCoder.Model;
+using GenderCoder.Model;
 
 namespace GenderCoder
 {
