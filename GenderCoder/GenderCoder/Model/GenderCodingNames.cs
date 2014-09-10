@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using GenderCoder.Properties;
+using ColinGourlay.GenderEncoder.Properties;
 using GenderCoder.Utilities;
 
 namespace GenderCoder.Model

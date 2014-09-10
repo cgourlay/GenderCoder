@@ -7,8 +7,8 @@
     <ProjectGuid>{1DD0459B-B612-41B4-A045-673AFE0C5C6F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GenderCoder</RootNamespace>
-    <AssemblyName>GenderCoder</AssemblyName>
+    <RootNamespace>ColinGourlay.GenderEncoder</RootNamespace>
+    <AssemblyName>ColinGourlay.GenderEncoder</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
