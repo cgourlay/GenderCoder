@@ -28,24 +28,14 @@ namespace ColinGourlay.GenderEncoder.Utilities
             return (from n in AllGenderEncodedNames where n.Forename.Contains("+") select n).ToList();
         }
 
-        
-
-
-
-
         private static List<Person> GetGenderEncoding()
         {
             var genderEncoding = new List<Person>();
-
-            var content = Resources.GenderMapping.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string s in content)
+            foreach (string person in Resources.GenderMapping.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries))
             {
-                string[] line = s.Split('\t');
-
-                genderEncoding.Add(new Person(line[0], line[1]));
+                var line = person.Split('\t');
+                genderEncoding.Add(new Person(forename: line[0], genderCode: line[1]));
             }
-
             return genderEncoding;
         }
     }
