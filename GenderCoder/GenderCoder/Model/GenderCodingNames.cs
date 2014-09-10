@@ -9,10 +9,10 @@ namespace GenderCoder.Model
 {
     internal static class GenderCodingNames
     {
-        public static CachedList<GenderCodingName> AllGenderCodingNames { get; set; }
-        public static CachedList<GenderCodingName> UnitesStatesNames { get; set; }
-        public static CachedList<GenderCodingName> ForeignNames { get; set; }
-        public static CachedList<GenderCodingName> WildCardNames { get; set; }
+        public static CachedList<GenderCodingName> AllGenderCodingNames { get; private set; }
+        public static CachedList<GenderCodingName> UnitesStatesNames { get; private set; }
+        public static CachedList<GenderCodingName> ForeignNames { get; private set; }
+        public static CachedList<GenderCodingName> WildCardNames { get; private set; }
 
         static GenderCodingNames()
         {
@@ -24,25 +24,25 @@ namespace GenderCoder.Model
 
         private static List<GenderCodingName> GetUnitedStatesNames()
         {
-            return (from n in AllGenderCodingNames where n.USPopularity > 0 select n).OrderByDescending(x => x.USPopularity).ToList();
+            return (from n in AllGenderCodingNames where n.UsPopularity > 0 select n).OrderByDescending(x => x.UsPopularity).ToList();
         }
 
         private static List<GenderCodingName> GetForeignNames()
         {
-            return (from n in AllGenderCodingNames where n.USPopularity < 1 select n).ToList();
+            return (from n in AllGenderCodingNames where n.UsPopularity < 1 select n).ToList();
         }
 
         private static List<GenderCodingName> GetWildCardNames()
         {
-            return (from n in AllGenderCodingNames where n.FirstName.Contains("+") select n).OrderByDescending(x => x.USPopularity).ToList();
+            return (from n in AllGenderCodingNames where n.FirstName.Contains("+") select n).OrderByDescending(x => x.UsPopularity).ToList();
         }
 
         private static List<GenderCodingName> GetAllGenderCodingNames()
         {
-            List<GenderCodingName> myResult = new List<GenderCodingName>();
+            var myResult = new List<GenderCodingName>();
 
             //Load Gender Coding Names
-            string[] content = Resources.GenderCodingNames.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var content = Resources.GenderCodingNames.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string s in content)
             {
@@ -52,7 +52,7 @@ namespace GenderCoder.Model
             }
 
             //Load Supplemental First Names
-            content = Resources.SupplementalFirstNames.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            content = Resources.SupplementalFirstNames.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string s in content)
             {
@@ -61,7 +61,7 @@ namespace GenderCoder.Model
                 myResult.Add(new GenderCodingName(line[0], line[1], Convert.ToInt32(line[2])));
             }
 
-            return myResult.OrderByDescending(x => x.USPopularity).ToList();
+            return myResult.OrderByDescending(x => x.UsPopularity).ToList();
         }
     }
 }

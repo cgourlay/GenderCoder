@@ -2,12 +2,12 @@
 {
     internal class GenderCodingName
     {
-        public GenderCodingName(string FirstName, string GenderCode, int USPopularity)
+        public GenderCodingName(string firstName, string genderCode, int usPopularity)
         {
-            this.FirstName = FirstName;
-            this.USPopularity = USPopularity;
+            FirstName = firstName;
+            UsPopularity = usPopularity;
 
-            switch (GenderCode)
+            switch (genderCode)
             {
                 case "M":
                     Sex = Gender.Male;
@@ -21,8 +21,8 @@
             }
         }
 
-        public string FirstName { get; set; }
-        public Gender Sex { get; set; }
-        public int USPopularity { get; set; }
+        public string FirstName { get; private set; }
+        public Gender Sex { get; private set; }
+        public int UsPopularity { get; private set; }
     }
 }
