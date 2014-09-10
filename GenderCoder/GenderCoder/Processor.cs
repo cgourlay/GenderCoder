@@ -8,8 +8,8 @@ namespace ColinGourlay.GenderEncoder
     {
         static CategoryProcessor()
         {
-            GenderCodingNames.AllGenderCodingNames.Refresh();
-            GenderCodingNames.WildCardNames.Refresh();
+            GenderEncodedNames.AllGenderEncodedNames.Refresh();
+            GenderEncodedNames.AllWildCardNames.Refresh();
         }
 
         public static Gender GetGender(string forename)
@@ -71,7 +71,7 @@ namespace ColinGourlay.GenderEncoder
 
         private static Gender SearchWildcardNames(string workingFirstName)
         {
-            foreach (Person name in GenderCodingNames.WildCardNames)
+            foreach (Person name in GenderEncodedNames.AllWildCardNames)
             {
                 if (string.Equals(workingFirstName, name.Forename, StringComparison.OrdinalIgnoreCase))
                 {

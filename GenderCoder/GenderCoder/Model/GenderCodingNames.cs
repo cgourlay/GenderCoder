@@ -1,39 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using ColinGourlay.GenderEncoder.Properties;
 using ColinGourlay.GenderEncoder.Utilities;
 
 namespace ColinGourlay.GenderEncoder.Model
 {
-    internal static class GenderCodingNames
+    internal static class GenderEncodedNames
     {
-        public static CachedList<Person> AllGenderCodingNames { get; private set; }
-        public static CachedList<Person> WildCardNames { get; private set; }
+        internal static CachedList<Person> AllGenderEncodedNames { get; private set; }
+        internal static CachedList<Person> AllWildCardNames { get; private set; }
 
-        static GenderCodingNames()
+        static GenderEncodedNames()
         {
-            AllGenderCodingNames = new CachedList<Person>(GetAllGenderCodingNames);
-            WildCardNames = new CachedList<Person>(GetWildCardNames);
+            AllGenderEncodedNames = new CachedList<Person>(GetAllGenderEncodedNames);
+            AllWildCardNames = new CachedList<Person>(GetWildCardNames);
+        }
+
+        private static List<Person> GetAllGenderEncodedNames()
+        {
+            return GetGenderEncoding();
         }
 
         private static List<Person> GetWildCardNames()
         {
-            return (from n in AllGenderCodingNames where n.Forename.Contains("+") select n).ToList();
+            return (from n in AllGenderEncodedNames where n.Forename.Contains("+") select n).ToList();
         }
 
-        private static List<Person> GetAllGenderCodingNames()
+        
+
+
+
+
+        private static List<Person> GetGenderEncoding()
         {
-            var myResult = new List<Person>();
-            GetGenderEncoding(myResult);
-            return myResult.ToList();
-        }
+            var genderEncoding = new List<Person>();
 
-
-
-
-        private static void GetGenderEncoding(ICollection<Person> genderEncoding)
-        {
             var content = Resources.GenderCodingNames.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string s in content)
@@ -42,6 +45,8 @@ namespace ColinGourlay.GenderEncoder.Model
 
                 genderEncoding.Add(new Person(line[0], line[1]));
             }
+
+            return genderEncoding;
         }
     }
 }
