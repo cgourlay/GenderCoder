@@ -55,16 +55,6 @@ namespace GenderCoder
             return LookupName(FirstName);
         }
 
-        internal static List<GenderCodingResult> GetGenderResults(List<string> FirstNames)
-        {
-            //Configure results
-            ConfigureGenderCodingResults(FirstNames);
-
-            //Process Records
-            ProcessInputRecords();
-
-            return Results;
-        }
 
         private static void ConfigureGenderCodingResults(List<string> FirstNames)
         {
