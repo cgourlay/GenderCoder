@@ -1,24 +1,24 @@
 ﻿using System;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 using System.Collections.Concurrent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -55,20 +55,6 @@ namespace GenderCoder
             return LookupName(FirstName);
         }
 
-
-        private static void ConfigureGenderCodingResults(List<string> FirstNames)
-        {
-            Results = new List<GenderCodingResult>();
-
-            int row = 1;
-
-            foreach (string s in FirstNames)
-            {
-                Results.Add(new GenderCodingResult(s, row));
-
-                row++;
-            }
-        }
 
 
         private static void ProcessInputRecords()
