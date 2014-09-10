@@ -3,6 +3,7 @@
 # =========================
 
 *.suo
+*.GhostDoc.xml
 
 # Windows image file caches
 Thumbs.db
