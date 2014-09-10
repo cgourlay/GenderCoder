@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Concurrent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 using System.Collections.Generic;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 using System.Linq;
 using System.Threading;
 using GenderCoder.Entities;
@@ -93,7 +93,7 @@ namespace GenderCoder
 
             while (Remaining > 0)
             {
-                ReportProgress(Results.Count, Remaining);
+                //ReportProgress(Results.Count, Remaining);
 
                 Thread.Sleep(2000);
 
@@ -174,18 +174,5 @@ namespace GenderCoder
 
             return Gender.Unknown;
         }
-
-        private static void ReportProgress(int TotalRecords, int RemainingRecords)
-        {
-            decimal ProgressPercent = decimal.Divide((decimal)(TotalRecords - RemainingRecords), (decimal)TotalRecords);
-
-            if (ProgressChanged != null)
-            {
-                ProgressChanged(ProgressPercent);
-            }
-
-            System.Diagnostics.Debug.Print("Gender Coding Process : " + ProgressPercent.ToString("0.000%") + " complete!");
-        }
-
     }
 }
