@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using GenderCoder.Properties;
 using GenderCoder.Utilities;
 
@@ -9,22 +10,19 @@ namespace GenderCoder.Entities
     internal static class GenderCodingNames
     {
         public static CachedList<GenderCodingName> AllGenderCodingNames { get; set; }
-        public static CachedList<GenderCodingName> USNames { get; set; }
+        public static CachedList<GenderCodingName> UnitesStatesNames { get; set; }
         public static CachedList<GenderCodingName> ForeignNames { get; set; }
         public static CachedList<GenderCodingName> WildCardNames { get; set; }
 
         static GenderCodingNames()
         {
-            AllGenderCodingNames = new CachedList<GenderCodingName>(() => { return GetAllGenderCodingNames(); });
-
-            USNames = new CachedList<GenderCodingName>(() => { return GetUSNames(); });
-
-            ForeignNames = new CachedList<GenderCodingName>(() => { return GetForeignNames(); });
-
-            WildCardNames = new CachedList<GenderCodingName>(() => { return GetWildCardNames(); });
+            AllGenderCodingNames = new CachedList<GenderCodingName>(GetAllGenderCodingNames);
+            UnitesStatesNames = new CachedList<GenderCodingName>(GetUnitedStatesNames);
+            ForeignNames = new CachedList<GenderCodingName>(GetForeignNames);
+            WildCardNames = new CachedList<GenderCodingName>(GetWildCardNames);
         }
 
-        private static List<GenderCodingName> GetUSNames()
+        private static List<GenderCodingName> GetUnitedStatesNames()
         {
             return (from n in AllGenderCodingNames where n.USPopularity > 0 select n).OrderByDescending(x => x.USPopularity).ToList();
         }

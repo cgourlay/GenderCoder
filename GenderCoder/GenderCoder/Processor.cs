@@ -31,7 +31,7 @@ namespace GenderCoder
         static Processor()
         {
             GenderCodingNames.AllGenderCodingNames.Refresh();
-            GenderCodingNames.USNames.Refresh();
+            GenderCodingNames.UnitesStatesNames.Refresh();
             GenderCodingNames.ForeignNames.Refresh();
             GenderCodingNames.WildCardNames.Refresh();
         }
@@ -55,7 +55,7 @@ namespace GenderCoder
             return LookupName(FirstName);
         }
 
-        public static List<GenderCodingResult> GetGenderResults(List<string> FirstNames)
+        internal static List<GenderCodingResult> GetGenderResults(List<string> FirstNames)
         {
             //Configure results
             ConfigureGenderCodingResults(FirstNames);
@@ -208,7 +208,7 @@ namespace GenderCoder
             else
             {
                 //Otherwise, attempt a case-insensitive compare against US-Only names
-                foreach (GenderCodingName name in GenderCodingNames.USNames)
+                foreach (GenderCodingName name in GenderCodingNames.UnitesStatesNames)
                 {
                     if (String.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
                     {
