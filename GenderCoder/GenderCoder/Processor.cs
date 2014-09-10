@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using GenderCoder.Entities;
 
@@ -16,10 +15,6 @@ namespace GenderCoder
         }
 
 
-
-        private static List<GenderCodingResult> Results;
-
-      
         
         public static Gender GetGender(string FirstName)
         {
