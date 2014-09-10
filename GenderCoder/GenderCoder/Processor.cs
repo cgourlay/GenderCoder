@@ -13,37 +13,15 @@ namespace GenderCoder
             GenderCodingNames.ForeignNames.Refresh();
             GenderCodingNames.WildCardNames.Refresh();
         }
-
-
         
-        public static Gender GetGender(string FirstName)
+        public static Gender GetGender(string forename)
         {
-            return LookupName(FirstName);
+            return GetGenderUsingForename(forename);
         }
 
-        private static Gender LookupName(string FirstName)
+        private static Gender GetGenderUsingForename(string FirstName)
         {
-            string workingFirstName = FirstName.Trim();
-
-            //Remove any intials at the end of the string 
-            while (workingFirstName.Contains("."))
-            {
-                int dotIndex = workingFirstName.IndexOf(".");
-
-                int spaceIndex = dotIndex - 1;
-
-                while (workingFirstName[spaceIndex] != ' ')
-                {
-                    spaceIndex--;
-
-                    if (spaceIndex == -1)
-                    {
-                        break;
-                    }
-                }
-
-                workingFirstName = workingFirstName.Remove(spaceIndex + 1, dotIndex - spaceIndex).Trim();
-            }
+            var workingFirstName = CleanName(FirstName);
 
             if (workingFirstName.Length < 1)
             {
@@ -89,6 +67,31 @@ namespace GenderCoder
             }
 
             return Gender.Unknown;
+        }
+
+        private static string CleanName(string FirstName)
+        {
+            string workingFirstName = FirstName.Trim();
+
+            while (workingFirstName.Contains("."))
+            {
+                int dotIndex = workingFirstName.IndexOf(".");
+
+                int spaceIndex = dotIndex - 1;
+
+                while (workingFirstName[spaceIndex] != ' ')
+                {
+                    spaceIndex--;
+
+                    if (spaceIndex == -1)
+                    {
+                        break;
+                    }
+                }
+
+                workingFirstName = workingFirstName.Remove(spaceIndex + 1, dotIndex - spaceIndex).Trim();
+            }
+            return workingFirstName;
         }
     }
 }
