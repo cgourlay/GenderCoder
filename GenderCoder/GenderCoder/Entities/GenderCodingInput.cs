@@ -1,6 +1,12 @@
-﻿namespace GenderCoder.Entities
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GenderCoder.Entities
 {
-    public class GenderCodingInput
+    internal class GenderCodingInput
     {
         public GenderCodingInput(string FirstName, int? UniqueID = null)
         {
