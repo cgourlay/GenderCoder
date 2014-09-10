@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 using ColinGourlay.GenderEncoder.Model;
 using ColinGourlay.GenderEncoder.Utilities;
@@ -23,7 +25,7 @@ namespace ColinGourlay.GenderEncoder
 
         public static string AsJson(this Gender gender)
         {
-            return JsonConvert.SerializeObject(gender);
+            return JsonConvert.SerializeObject(gender, new StringEnumConverter());
         }
 
         private static Gender GetGenderUsingForename(string firstName)
