@@ -4,24 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 using GenderCoder.Entities;
 
 namespace GenderCoder
@@ -36,6 +18,9 @@ namespace GenderCoder
             GenderCodingNames.WildCardNames.Refresh();
         }
 
+
+
+
       
         private static object ThreadLock = new object();
 
@@ -48,54 +33,6 @@ namespace GenderCoder
             return LookupName(FirstName);
         }
 
-
-
-        private static void ProcessInputRecords()
-        {
-            ConcurrentQueue<GenderCodingResult> ScanQueue = new ConcurrentQueue<GenderCodingResult>();
-
-            foreach (GenderCodingResult result in Results)
-            {
-                ScanQueue.Enqueue(result);
-            }
-
-            //Upping the thread count to slightly above the processor count appears to maximize performance...?
-            for (int i = 1; i <= (Environment.ProcessorCount + 2); i++)
-            {
-                Thread T = new Thread(() =>
-                {
-                    while (true)
-                    {
-                        GenderCodingResult name;
-
-                        if (ScanQueue.TryDequeue(out name))
-                        {
-                            name.Gender = LookupName(name.FirstName);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                });
-
-                T.Start();
-            }
-
-            int Remaining = Results.Count;
-
-            while (Remaining > 0)
-            {
-                //ReportProgress(Results.Count, Remaining);
-
-                Thread.Sleep(2000);
-
-                lock (ThreadLock)
-                {
-                    Remaining = Results.Where(x => x.Processed == false).ToList().Count;
-                }
-            }
-        }
 
 
         private static Gender LookupName(string FirstName)
