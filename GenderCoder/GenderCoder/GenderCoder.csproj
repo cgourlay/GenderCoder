@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Gender.cs" />
     <Compile Include="Entities\GenderCodingInput.cs" />
     <Compile Include="Entities\GenderCodingName.cs" />
     <Compile Include="Entities\GenderCodingNames.cs" />
