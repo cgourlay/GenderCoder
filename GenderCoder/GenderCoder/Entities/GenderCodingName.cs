@@ -10,25 +10,13 @@
             switch (GenderCode)
             {
                 case "M":
-                    this.Sex = Gender.Male;
-                    break;
-                case "1M":
-                    //this.Gender = Gender.MostlyMale;
-                    break;
-                case "?M":
-                    //this.Gender = Gender.MostlyMale;
+                    Sex = Gender.Male;
                     break;
                 case "F":
-                    this.Sex = Gender.Female;
-                    break;
-                case "1F":
-                    //this.Gender = Gender.MostlyFemale;
-                    break;
-                case "?F":
-                    //this.Gender = Gender.MostlyFemale;
+                    Sex = Gender.Female;
                     break;
                 default:
-                    this.Sex = Gender.Unknown;
+                    Sex = Gender.Unknown;
                     break;
             }
         }
