@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 using System.Linq;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 using System.Threading;
 using GenderCoder.Entities;
 
@@ -37,12 +37,6 @@ namespace GenderCoder
         }
 
       
-        public delegate void ProgressChangedEventHandler(decimal PercentComplete);
-
-        public static event ProgressChangedEventHandler ProgressChanged;
-
-      
-
       
         private static object ThreadLock = new object();
 
