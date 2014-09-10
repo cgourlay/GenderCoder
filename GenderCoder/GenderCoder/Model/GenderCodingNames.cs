@@ -32,16 +32,16 @@ namespace ColinGourlay.GenderEncoder.Model
 
         private static void GetAdditionalNames(ICollection<GenderCodingName> myResult)
         {
-            string[] content;
+            //string[] content;
 
-            content = Resources.SupplementalFirstNames.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
+            //content = Resources.SupplementalFirstNames.Split(new[] {"\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (string s in content)
-            {
-                string[] line = s.Split('\t');
+            //foreach (string s in content)
+            //{
+            //    string[] line = s.Split('\t');
 
-                myResult.Add(new GenderCodingName(line[0], line[1]));
-            }
+            //    myResult.Add(new GenderCodingName(line[0], line[1]));
+            //}
         }
 
         private static void GetGenderEncoding(ICollection<GenderCodingName> myResult)

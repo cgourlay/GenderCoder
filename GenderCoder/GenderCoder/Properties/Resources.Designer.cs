@@ -113,52 +113,5 @@ namespace ColinGourlay.GenderEncoder.Properties {
                 return ResourceManager.GetString("GenderCodingNames", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CONCEPCION	F	1
-        ///ELBA	F	1
-        ///ANTIONETTE	F	1
-        ///ROCIO	F	1
-        ///JACQULINE	F	1
-        ///VIRGINA	F	1
-        ///GUILLERMINA	F	1
-        ///SAMATHA	F	1
-        ///PRICILLA	F	1
-        ///MAJORIE	F	1
-        ///STEPHENIE	F	1
-        ///BELEN	F	1
-        ///JESICA	F	1
-        ///ELIZEBETH	F	1
-        ///CARMAN	F	1
-        ///BLANCH	F	1
-        ///SANJUANITA	F	1
-        ///SANJUANA	F	1
-        ///PHYLISS	F	1
-        ///MARQUERITE	F	1
-        ///EVONNE	F	1
-        ///FLORIDA	F	1
-        ///CHERLY	F	1
-        ///MELONY	F	1
-        ///JENNETTE	F	1
-        ///ARACELY	F	1
-        ///MERCY	F	1
-        ///STEPHAINE	F	1
-        ///MILISSA	F	1
-        ///STEPHANI	F	1
-        ///ROSALVA	F	1
-        ///CHERRIE	F	1
-        ///AWILDA	F	1
-        ///GISELE	F	1
-        ///LAVONDA	F	1
-        ///KATHLENE	F	1
-        ///CANDANCE	F	1
-        ///WANITA	F	1
-        ///SHIRLY [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string SupplementalFirstNames {
-            get {
-                return ResourceManager.GetString("SupplementalFirstNames", resourceCulture);
-            }
-        }
     }
 }
