@@ -2,9 +2,9 @@
 {
     internal class Person
     {
-        public Person(string firstName, string genderCode)
+        public Person(string forename, string genderCode)
         {
-            FirstName = firstName;
+            Forename = forename;
 
             switch (genderCode.ToUpper())
             {
@@ -20,7 +20,7 @@
             }
         }
 
-        public string FirstName { get; private set; }
+        public string Forename { get; private set; }
         public Gender Gender { get; private set; }
     }
 }

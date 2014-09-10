@@ -19,7 +19,7 @@ namespace ColinGourlay.GenderEncoder.Model
 
         private static List<Person> GetWildCardNames()
         {
-            return (from n in AllGenderCodingNames where n.FirstName.Contains("+") select n).ToList();
+            return (from n in AllGenderCodingNames where n.Forename.Contains("+") select n).ToList();
         }
 
         private static List<Person> GetAllGenderCodingNames()

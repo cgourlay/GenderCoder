@@ -73,7 +73,7 @@ namespace ColinGourlay.GenderEncoder
         {
             foreach (Person name in GenderCodingNames.WildCardNames)
             {
-                if (string.Equals(workingFirstName, name.FirstName, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(workingFirstName, name.Forename, StringComparison.OrdinalIgnoreCase))
                 {
                     {
                         return name.Gender;
