@@ -2,8 +2,9 @@
 # Visual Studio 2013 Output
 # =========================
 
-*.suo
+bin/
 *.GhostDoc.xml
+*.suo
 
 # Windows image file caches
 Thumbs.db
