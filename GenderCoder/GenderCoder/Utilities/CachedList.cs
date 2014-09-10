@@ -5,63 +5,50 @@ namespace GenderCoder.Utilities
 {
     internal class CachedList<T> : IEnumerable<T>
     {
-        private DateTime? LastRefreshed = null;
+        private TimeSpan? _autoRefreshInterval;
+        private List<T> _cachedList;
+        private DateTime? _lastRefreshed;
 
-        private TimeSpan? AutoRefreshInterval;
-
-        public CachedList(Func<List<T>> RefreshFunction, TimeSpan? AutoRefreshInterval = null)
+        public CachedList(Func<List<T>> refreshFunction, TimeSpan? autoRefreshInterval = null)
         {
-            this.RefreshFunction = RefreshFunction;
-            this.AutoRefreshInterval = AutoRefreshInterval;
-
-            _CachedList = new List<T>();
-
+            _autoRefreshInterval = autoRefreshInterval;
+            _cachedList = new List<T>();
+            RefreshFunction = refreshFunction;
         }
-
-        public Func<List<T>> RefreshFunction { get; set; }
-
-        public void Refresh()
-        {
-            LastRefreshed = DateTime.Now;
-
-            _CachedList = RefreshFunction();
-
-            LastRefreshed = DateTime.Now;
-        }
-
-        private List<T> _CachedList;
 
         public List<T> List
         {
             get
             {
-                bool RefreshRequired = true;
+                bool refreshRequired = true;
 
-                if (LastRefreshed.HasValue)
+                if (_lastRefreshed.HasValue)
                 {
-                    if (AutoRefreshInterval.HasValue)
+                    if (_autoRefreshInterval.HasValue)
                     {
-                        TimeSpan TimeSinceLastRefresh = DateTime.Now - LastRefreshed.Value;
+                        TimeSpan TimeSinceLastRefresh = DateTime.Now - _lastRefreshed.Value;
 
-                        if (TimeSinceLastRefresh <= AutoRefreshInterval)
+                        if (TimeSinceLastRefresh <= _autoRefreshInterval)
                         {
-                            RefreshRequired = false;
+                            refreshRequired = false;
                         }
                     }
                     else
                     {
-                        RefreshRequired = false;
+                        refreshRequired = false;
                     }
                 }
 
-                if (RefreshRequired)
+                if (refreshRequired)
                 {
-                    this.Refresh();
+                    Refresh();
                 }
 
-                return _CachedList;
+                return _cachedList;
             }
         }
+
+        public Func<List<T>> RefreshFunction { get; set; }
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -71,6 +58,13 @@ namespace GenderCoder.Utilities
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return List.GetEnumerator();
+        }
+
+        public void Refresh()
+        {
+            _lastRefreshed = DateTime.Now;
+            _cachedList = RefreshFunction();
+            _lastRefreshed = DateTime.Now;
         }
     }
 }
