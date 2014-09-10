@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using ColinGourlay.GenderEncoder.Properties;
-using GenderCoder.Utilities;
+using ColinGourlay.GenderEncoder.Utilities;
 
-namespace GenderCoder.Model
+namespace ColinGourlay.GenderEncoder.Model
 {
     internal static class GenderCodingNames
     {

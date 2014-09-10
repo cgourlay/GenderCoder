@@ -1,4 +1,4 @@
-﻿namespace GenderCoder.Model
+﻿namespace ColinGourlay.GenderEncoder.Model
 {
     public enum Gender
     {

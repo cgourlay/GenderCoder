@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GenderCoder.Utilities
+namespace ColinGourlay.GenderEncoder.Utilities
 {
     internal class CachedList<T> : IEnumerable<T>
     {
