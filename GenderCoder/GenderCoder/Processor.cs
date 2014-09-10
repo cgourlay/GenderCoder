@@ -86,7 +86,7 @@ namespace GenderCoder
 
             foreach (string s in FirstNames)
             {
-                Results.Add(new GenderCodingResult(s, i));
+                Results.Add(new GenderCodingResult(s, row));
 
                 row++;
             }
@@ -100,8 +100,7 @@ namespace GenderCoder
 
             foreach (GenderCodingInput input in FirstNames)
             {
-                Results.Add(new GenderCodingResult(input.FirstName, i, input.UniqueID));
-
+                Results.Add(new GenderCodingResult(input.FirstName, row, input.UniqueID));
                 row++;
             }
         }
