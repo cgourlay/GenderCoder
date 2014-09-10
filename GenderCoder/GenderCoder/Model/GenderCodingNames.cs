@@ -16,25 +16,21 @@ namespace ColinGourlay.GenderEncoder.Model
         static GenderCodingNames()
         {
             AllGenderCodingNames = new CachedList<GenderCodingName>(GetAllGenderCodingNames);
-            UnitesStatesNames = new CachedList<GenderCodingName>(GetUnitedStatesNames);
-            ForeignNames = new CachedList<GenderCodingName>(GetForeignNames);
+            UnitesStatesNames = new CachedList<GenderCodingName>(GetAllGenderCodingNames);
+            ForeignNames = new CachedList<GenderCodingName>(GetAllGenderCodingNames);
             WildCardNames = new CachedList<GenderCodingName>(GetWildCardNames);
         }
 
-        private static List<GenderCodingName> GetUnitedStatesNames()
-        {
-            return (from n in AllGenderCodingNames where n.UsPopularity > 0 select n).OrderByDescending(x => x.UsPopularity).ToList();
-        }
-
-        private static List<GenderCodingName> GetForeignNames()
-        {
-            return (from n in AllGenderCodingNames where n.UsPopularity < 1 select n).ToList();
-        }
-
+       
+       
         private static List<GenderCodingName> GetWildCardNames()
         {
-            return (from n in AllGenderCodingNames where n.FirstName.Contains("+") select n).OrderByDescending(x => x.UsPopularity).ToList();
+            return (from n in AllGenderCodingNames where n.FirstName.Contains("+") select n).ToList();
         }
+
+
+
+
 
         private static List<GenderCodingName> GetAllGenderCodingNames()
         {
@@ -47,7 +43,7 @@ namespace ColinGourlay.GenderEncoder.Model
             {
                 string[] line = s.Split('\t');
 
-                myResult.Add(new GenderCodingName(line[0], line[1], Convert.ToInt32(line[2])));
+                myResult.Add(new GenderCodingName(line[0], line[1]));
             }
 
             //Load Supplemental First Names
@@ -57,10 +53,10 @@ namespace ColinGourlay.GenderEncoder.Model
             {
                 string[] line = s.Split('\t');
 
-                myResult.Add(new GenderCodingName(line[0], line[1], Convert.ToInt32(line[2])));
+                myResult.Add(new GenderCodingName(line[0], line[1]));
             }
 
-            return myResult.OrderByDescending(x => x.UsPopularity).ToList();
+            return myResult.ToList();
         }
     }
 }
