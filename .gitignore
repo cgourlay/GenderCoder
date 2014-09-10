@@ -4,6 +4,7 @@
 
 bin/
 obj/
+*.csproj.user
 *.GhostDoc.xml
 *.suo
 
