@@ -20,7 +20,14 @@ namespace ColinGourlay.GenderEncoder.Utilities
 
         private Func<List<T>> ListToCache { get; set; }
 
-        private TimeSpan TimeSinceLastRefresh { get { return DateTime.Now - _lastRefreshed.Value; } }
+        private TimeSpan TimeSinceLastRefresh
+        {
+            get
+            {
+                if (_lastRefreshed.HasValue) { return DateTime.Now - _lastRefreshed.Value; }
+                return new TimeSpan();
+            }
+        }
 
         private List<T> GetCachedList()
         {
